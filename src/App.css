@@ -1,0 +1,238 @@
+.App {
+  text-align: center;
+  background-color: #E0E0E0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Frame styles */
+
+.Frame {
+  padding-left: 48px;
+  margin-left: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 48px;
+  margin-right: 48px;
+  text-align: left;
+}
+
+.Frame:nth-child(2) {
+  margin-top: 200px;
+}
+.Frame:nth-child(even) {
+  background-color: #E0E0E0;
+}
+.Frame:nth-child(odd) {
+  background-color: #C7CCDB;
+}
+
+.Frame h2 {
+  color: navy;
+}
+
+
+/* Frame styles */
+
+.Header {
+  height: 272px;
+  background-color: white;
+  padding-left: 0px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.Header .Headshot {
+  height: 192px;
+  width: 192px;
+}
+.Header .Headshot-container {
+  height: 192px;
+  width: 192px;
+  border-radius: 50%;
+  overflow: hidden;
+  align-self: center;
+  margin-left: 48px;
+}
+
+.Header .Text-container {
+  text-align: left;
+  padding-left: 16px;
+  align-self: center;
+  flex: 1;
+}
+
+.Header .Text-container .Primary {
+  font-weight: bold;
+  color: navy;
+}
+.Header .Text-container .Secondary {
+  color: navy;
+  font-weight: 500;
+}
+.Header .Text-container .Tertiary {
+  color: navy;
+}
+
+.Header .Menu-container {
+}
+
+.Header .Menu-container .hamburger {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+}
+
+.Header .Menu-container .Background {
+  height: 200px; /*tall-header height*/
+  padding-top: 72px; /*short-header height*/
+  background-color: palevioletred;
+  width: 320px;
+  z-index: 99;
+  transform: translate(100%, 0%);
+}
+
+
+@keyframes slide-out {
+  from {
+    transform: translate(0%, 0%);
+  }
+  to {
+    transform: translate(100%, 0%);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translate(100%, 0%);
+  }
+  to {
+    transform: translate(0%, 0%);
+  }
+}
+.Header .Menu-container .Background.Dirty{
+  animation-name: slide-out;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+.Header .Menu-container .Background.Visible{
+  animation-name: slide-in;
+  animation-duration: 0.3s;
+  transform: translate(0%, 0%);
+  animation-timing-function: ease-in-out;
+}
+
+/* usable width: 280 */
+/* usable height:  180*/
+.Header .Menu-container .Background .Navigation-link{
+  display: block;
+  width: 120px;
+  height: 28px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-weight: 600;
+  font-size: large;
+}
+
+.Header .Menu-container .Background .Navigation-link:hover{
+  color: navy;
+}
+.Header .Menu-container .Background.Visible .Navigation-link{
+  cursor: pointer;
+}
+
+@keyframes odd-stagger {
+  from {
+    transform: translate(20px, 0%);
+  }
+  50% {
+    transform: translate(20px, 0%);
+  }
+  to {
+    transform: translate(20px, 50%);
+  }
+}
+@keyframes odd-unstagger {
+  from {
+    transform: translate(20px, 50%);
+  }
+  50% {
+    transform: translate(20px, 0%);
+  }
+  to {
+    transform: translate(20px, 0%);
+  }
+}
+
+@keyframes even-stagger {
+  from {
+    transform: translate(20px, 0%);
+  }
+  50% {
+    transform: translate(160px, 0%);
+  }
+  to {
+    transform: translate(160px, -50%);
+  }
+}
+@keyframes odd-unstagger {
+  from {
+    transform: translate(160px, -50%);
+  }
+  50% {
+    transform: translate(160px, 0%);
+  }
+  to {
+    transform: translate(20px, 0%);
+  }
+}
+
+.Header .Menu-container .Background .Navigation-link:nth-child(odd){
+  transform: translate(20px, 50%);
+}
+.Header .Menu-container .Background .Navigation-link:nth-child(even){
+  transform: translate(160px, -50%);
+}
+
+.Header .Menu-container .Background .Navigation-link:nth-child(odd){
+  animation-name: odd-stagger;
+  animation-duration: 0.8s;
+}
+.Header .Menu-container .Background .Navigation-link:nth-child(even){
+  animation-name: even-stagger;
+  animation-duration: 0.8s;
+  transform: translate(160px, -50%);
+}
+
