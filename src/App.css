@@ -1,36 +1,6 @@
 .App {
   text-align: center;
-  background-color: #E0E0E0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: #F0F0F0;
 }
 /* Frame styles */
 
@@ -45,24 +15,33 @@
 }
 
 .Frame:nth-child(2) {
-  margin-top: 200px;
+  margin-top: 240px;
 }
 .Frame:nth-child(even) {
-  background-color: #E0E0E0;
+  background-color: #F0F0F0;
+  /* background-color: #F0F0F0; */
 }
 .Frame:nth-child(odd) {
-  background-color: #C7CCDB;
+  background-color: #afcfbd;
 }
 
 .Frame h2 {
-  color: navy;
+  color: #000052;
 }
 
+@keyframes header-shrink {
+  from { height: 240px; }
+  50% { height: 240px; }
+  to { height: 80px; }
+}
 
-/* Frame styles */
-
+@keyframes header-grow {
+  from { height: 80px; }
+  50% { height: 240px; }
+  to { height: 240px; }
+}
 .Header {
-  height: 272px;
+  height: 240px;
   background-color: white;
   padding-left: 0px;
   display: flex;
@@ -72,9 +51,30 @@
   width: 100%; /* Full width */
 }
 
+.Header.Dirty {
+  animation: header-grow 0.6s;
+}
+
+.Header.Small {
+  height: 80px;
+  animation: header-shrink 0.6s;
+}
+
+
+@keyframes headshot-shrink {
+  from { height: 192px; width: 192px; }
+  50% { height: 192px; width: 192px; }
+  to { height: 60px; width: 60px; }
+}
+
+@keyframes headshot-grow {
+  from { height: 60px; width: 60px; }
+  50% { height: 192px; width: 192px; }
+  to { height: 192px; width: 192px; }
+}
 .Header .Headshot {
-  height: 192px;
-  width: 192px;
+  height: 100%;
+  width: 100%;
 }
 .Header .Headshot-container {
   height: 192px;
@@ -84,27 +84,81 @@
   align-self: center;
   margin-left: 48px;
 }
+.Header.Dirty .Headshot-container {
+  animation: headshot-grow 0.6s;
+}
+.Header.Small .Headshot-container {
+  height: 60px;
+  width: 60px;
+  animation: headshot-shrink 0.6s;
+}
+
+@keyframes text-shrink {
+  from { height: 150px; }
+  50% { height: 150px; }
+  to { height: 80px; }
+}
+
+@keyframes text-grow {
+  from { height: 80px; }
+  50% { height: 80px; }
+  to { height: 150px; }
+}
 
 .Header .Text-container {
   text-align: left;
   padding-left: 16px;
   align-self: center;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 150px;
+  color: #000052;
 }
 
+.Header.Dirty .Text-container{
+  animation: text-grow 0.6s;
+}
+
+.Header.Small .Text-container{
+  height: 80px;
+  animation: text-shrink 0.6s;
+}
 .Header .Text-container .Primary {
   font-weight: bold;
-  color: navy;
+  font-size: 32px;
+  flex: 1;
 }
-.Header .Text-container .Secondary {
-  color: navy;
+.Header .Text-container .Secondary {  
   font-weight: 500;
-}
-.Header .Text-container .Tertiary {
-  color: navy;
+  font-size: 20px;
+  flex: 1;
 }
 
-.Header .Menu-container {
+@keyframes fade-out-shrink {
+  from { font-size: 16px; opacity: 1; }
+  50% { font-size: 16px; opacity: 0; }
+  to { font-size: 0px; opacity: 0; }
+}
+@keyframes fade-in-grow {
+  from { font-size: 0px; opacity: 0; }
+  50% { font-size: 16px; opacity: 0; }
+  to { font-size: 16px; opacity: 1; }
+}
+
+.Header .Text-container .Tertiary {
+  opacity: 1;
+  font-size: 16px;
+}
+.Header.Dirty .Text-container .Tertiary {
+  animation: fade-in-grow 0.6s;
+}
+.Header.Small .Text-container .Tertiary {
+  opacity: 0;
+  font-size: 0px;
+  animation: fade-out-shrink 0.6s;
 }
 
 .Header .Menu-container .hamburger {
@@ -114,46 +168,70 @@
   z-index: 9999;
 }
 
-.Header .Menu-container .Background {
-  height: 200px; /*tall-header height*/
-  padding-top: 72px; /*short-header height*/
-  background-color: palevioletred;
-  width: 320px;
-  z-index: 99;
-  transform: translate(100%, 0%);
+@keyframes drawer-shrink {
+  from { width: 320px }
+  50% { width: 320px }
+  to { width: 160px }
 }
-
+@keyframes drawer-grow {
+  from { width: 160px }
+  50% { width: 320px }
+  to { width: 320px }
+}
 
 @keyframes slide-out {
   from {
     transform: translate(0%, 0%);
   }
   to {
-    transform: translate(100%, 0%);
+    transform: translate(102%, 0%);
   }
 }
 
 @keyframes slide-in {
   from {
-    transform: translate(100%, 0%);
+    transform: translate(102%, 0%);
   }
   to {
     transform: translate(0%, 0%);
   }
 }
-.Header .Menu-container .Background.Dirty{
+.Header .Menu-container .Background {
+  height: 160px; /*tall-header height*/
+  width: 320px;
+  z-index: 99;
+}
+.Header.Dirty .Menu-container .Background{
+  animation-name: drawer-grow;
+  animation-duration: 0.6s;
+}
+.Header.Small .Menu-container .Background{
+  animation-name: drawer-shrink;
+  animation-duration: 0.6s;
+  width: 160px;
+}
+
+
+.Header .Menu-container .Background .Background-inner{
+  animation-duration: 0.3s;
+  transform: translate(102%, 0%);
+  height:100%;
+  width:100%;
+  padding-top: 80px; /*short-header height*/
+  background-color: #8FBCA3;
+}
+
+.Header .Menu-container .Background.Dirty .Background-inner{
   animation-name: slide-out;
   animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
 }
-.Header .Menu-container .Background.Visible{
+.Header .Menu-container .Background.Visible .Background-inner{
   animation-name: slide-in;
   animation-duration: 0.3s;
   transform: translate(0%, 0%);
-  animation-timing-function: ease-in-out;
 }
 
-/* usable width: 280 */
+/* usable width: 240 */
 /* usable height:  180*/
 .Header .Menu-container .Background .Navigation-link{
   display: block;
@@ -167,7 +245,7 @@
 }
 
 .Header .Menu-container .Background .Navigation-link:hover{
-  color: navy;
+  color: #000052;
 }
 .Header .Menu-container .Background.Visible .Navigation-link{
   cursor: pointer;
@@ -207,7 +285,7 @@
     transform: translate(160px, -50%);
   }
 }
-@keyframes odd-unstagger {
+@keyframes even-unstagger {
   from {
     transform: translate(160px, -50%);
   }
@@ -226,13 +304,24 @@
   transform: translate(160px, -50%);
 }
 
-.Header .Menu-container .Background .Navigation-link:nth-child(odd){
+.Header.Dirty .Menu-container .Background .Navigation-link:nth-child(odd){
   animation-name: odd-stagger;
-  animation-duration: 0.8s;
+  animation-duration: 0.6s;
 }
-.Header .Menu-container .Background .Navigation-link:nth-child(even){
+.Header.Dirty .Menu-container .Background .Navigation-link:nth-child(even){
   animation-name: even-stagger;
-  animation-duration: 0.8s;
+  animation-duration: 0.6s;
   transform: translate(160px, -50%);
 }
 
+
+.Header.Small .Menu-container .Background .Navigation-link:nth-child(odd){
+  animation-name: odd-unstagger;
+  animation-duration: 0.6s;
+  transform: translate(20px, 0%);
+}
+.Header.Small .Menu-container .Background .Navigation-link:nth-child(even){
+  animation-name: even-unstagger;
+  animation-duration: 0.6s;
+  transform: translate(20px, 0%);
+}

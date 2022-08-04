@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './App.css';
 
-import { AwardsFrame, BiographyFrame, ContactFrame, CVFrame, ExperienceFrame, PublicationsFrame } from './frames'
+import { BiographyFrame, NewsFrame, ResearchFrame, LinksFrame } from './frames'
 import Header from './header'
 
 function App() {
+  const [scrolled, setScrolled] = useState(false)
+  const handleScroll = useCallback(() => {
+    if (window.scrollY >= 200) setScrolled(true)
+    else setScrolled(false)
+  }, [setScrolled])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
   return (
     <div className="App">
-      <Header collapseState={0} />
+      <Header isSmall={scrolled} />
       <BiographyFrame />
-      <ExperienceFrame />
-      <AwardsFrame />
-      <PublicationsFrame />
-      <ContactFrame />
-      <CVFrame />
+      <NewsFrame />
+      <ResearchFrame />
+      <LinksFrame />
     </div>
   );
 }

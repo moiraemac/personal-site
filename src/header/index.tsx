@@ -1,42 +1,65 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import '../App.css'
 import '../burger.css'
-import logo from '../resources/headshot.jpg';
+import headshot from '../resources/headshot.jpg';
 
 type Props = {
-    collapseState: number // 0 for full size, 1 for collapsed
+    isSmall: boolean
 }
 
 function Frame(props: Props) {
     const [showMenu, setShowMenu] = useState(false)
+    const [dirtyMenu, setDirtyMenu] = useState(false)
     const [dirty, setDirty] = useState(false)
     const toggle = useCallback(() => {
         setShowMenu(!showMenu)
-        setDirty(true)
+        setDirtyMenu(true)
     }, [showMenu])
+    useEffect(() => {
+        if (props.isSmall) {
+            setDirty(true)
+        }
+    }, [dirty || props.isSmall])
+    const headerClass = useMemo(() => {
+        const arr = ['Header']
+        if (dirty) arr.push('Dirty')
+        if (props.isSmall) arr.push('Small')
+        return arr.join(' ')
+    }, [props.isSmall, dirty])
+    const burgerClass = useMemo(() => {
+        const arr = ['hamburger', 'hamburger--arrowalt-r']
+        if (showMenu) arr.push('is-active')
+        return arr.join(' ')
+    }, [showMenu])
+    const menuClass = useMemo(() => {
+        const arr = ['Background']
+        if (dirtyMenu) arr.push('Dirty')
+        if (showMenu) arr.push('Visible')
+        return arr.join(' ')
+    }, [showMenu, dirtyMenu])
     return (
-        <div className="Header">
+        <div className={headerClass}>
             <div className="Headshot-container">
-                <img src={logo} className="Headshot" alt="logo" />
+                <img src={headshot} className="Headshot" alt="logo" />
             </div>
             <div className="Text-container">
-                <h2 className="Primary">Moira MacNeil</h2>
-                <p className="Secondary">PhD Student in Operations Research</p>
-                <p className="Tertiary">University of Toronto</p>
+                <span className="Primary">Moira MacNeil</span>
+                <span className="Secondary">PhD Student in Operations Research</span>
+                <span className="Tertiary">University of Toronto<br/>m.macneil [at] utoronto [dot] ca</span>
             </div>
             <div className="Menu-container">
-                <button className={`hamburger hamburger--arrowalt-r ${showMenu ? ' is-active' : ''}`} type="button" onClick={toggle}>
+                <button className={burgerClass} type="button" onClick={toggle}>
                     <span className="hamburger-box">
                         <span className="hamburger-inner"></span>
                     </span>
                 </button>
-                <div className={`Background ${dirty ? 'Dirty' : ''} ${showMenu ? 'Visible' : ''}`}>
-                    <button className="Navigation-link">Biography</button>
-                    <button className="Navigation-link">Experience</button>
-                    <button className="Navigation-link">Awards</button>
-                    <button className="Navigation-link">Publications</button>
-                    <button className="Navigation-link">Contact</button>
-                    <button className="Navigation-link">CV</button>
+                <div className={menuClass}>
+                    <div className="Background-inner">
+                        <button className="Navigation-link">About Me</button>
+                        <button className="Navigation-link">News</button>
+                        <button className="Navigation-link">Research</button>
+                        <button className="Navigation-link">CV</button>
+                    </div>
                 </div>
             </div>
 

@@ -1,11 +1,11 @@
 import React from 'react'
 
-import BaseFrame from './base'
-import allGrafs from '../fixture/text'
+import Frame from './paragraphFrame'
+import allGrafs from '../fixture/grafs'
 
-const frameName = "Biograpy"
+const frameName = "About Me"
 const grafs = [0, 19, 16, 5, 29].map(idx => allGrafs[idx])
 
-const BiographyFrame = () => <BaseFrame frameName={frameName} grafs={grafs} />
+const BiographyFrame = () => <Frame frameName={frameName} grafs={grafs} />
 
 export default BiographyFrame

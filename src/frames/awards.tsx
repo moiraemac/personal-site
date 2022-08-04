@@ -1,7 +1,7 @@
 import React from 'react'
 
-import BaseFrame from './base'
-import allGrafs from '../fixture/text'
+import BaseFrame from './paragraphFrame'
+import allGrafs from '../fixture/grafs'
 
 const frameName = "Awards"
 const grafs = [2, 15].map(idx => allGrafs[idx])

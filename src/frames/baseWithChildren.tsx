@@ -3,16 +3,16 @@ import '../App.css'
 
 type Props = {
     frameName: string
-    grafs: string[]
+    children: React.ReactNode
 }
 
-function Frame(props: Props) {
+function FrameWithChildren(props: Props) {
     return (
         <div className="Frame">
             <h2>{props.frameName}</h2>
-            {props.grafs.map((graf: string) => <p>{graf}</p>)}
+            {props.children}
         </div>
     )
 }
 
-export default Frame;
+export default FrameWithChildren;
