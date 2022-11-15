@@ -1,13 +1,21 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './App.css';
 
-import { BiographyFrame, NewsFrame, ResearchFrame, LinksFrame } from './frames'
+import { BiographyFrame, NewsFrame, ResearchFrame, TeachingFrame, EducationFrame } from './frames'
 import Header from './header'
 import isNarrow from './hooks/isNarrow';
 
+const headers = [
+  {id: "bio", title: "About Me"},
+  {id: "news", title: "News"},
+  {id: "education", title: "Education"},
+  {id: "research", title: "Research"},
+  {id: "teaching", title: "Teaching"},
+]
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const isMobile = isNarrow(450);
+  const isMobile = isNarrow(800);
 
   const className = isMobile ? "App App-Mobile" : "App";
   
@@ -20,11 +28,12 @@ function App() {
   }, [handleScroll]);
   return (
     <div className={className}>
-      <Header isSmall={scrolled} isMobile={isMobile}/>
+      <Header isSmall={scrolled} isMobile={isMobile} links={headers}/>
       <BiographyFrame />
       <NewsFrame />
+      <EducationFrame />
       <ResearchFrame />
-      <LinksFrame />
+      <TeachingFrame />
     </div>
   );
 }

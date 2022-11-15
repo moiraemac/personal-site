@@ -5,6 +5,10 @@ import MobileHeader from './mobile';
 type Props = {
     isSmall: boolean
     isMobile: boolean
+    links: {
+        id: string,
+        title: string,
+    }[]
 }
 
 function Frame(props: Props) {

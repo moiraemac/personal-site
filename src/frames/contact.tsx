@@ -6,6 +6,6 @@ import allGrafs from '../fixture/grafs'
 const frameName = "Contact"
 const grafs = [27].map(idx => allGrafs[idx])
 
-const ContactFrame = () => <BaseFrame frameName={frameName} grafs={grafs} />
+const ContactFrame = () => <BaseFrame frameName={frameName} grafs={grafs} id="contact" />
 
 export default ContactFrame

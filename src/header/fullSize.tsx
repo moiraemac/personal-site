@@ -5,9 +5,14 @@ import headshot from '../resources/headshot.jpg';
 
 type Props = {
     isSmall: boolean
+    links: {
+        id: string,
+        title: string,
+    }[]
 }
 
 function Component(props: Props) {
+    const {links} = props; 
     const [showMenu, setShowMenu] = useState(false)
     const [dirtyMenu, setDirtyMenu] = useState(false)
     const [dirty, setDirty] = useState(false)
@@ -26,6 +31,25 @@ function Component(props: Props) {
         if (props.isSmall) arr.push('Small')
         return arr.join(' ')
     }, [props.isSmall, dirty])
+    const onClick = useCallback(evt => {
+        const link = links.find(l => "link-to-" + l.id == evt.target.id)
+        if (!link) {
+            console.warn("can't find link for " + evt.target.id)
+            return;
+        }
+        const target = document.getElementById(link.id)
+        if (!target) {
+            console.warn("can't find target for " + evt.target.id)
+            return;
+        }
+        const {top} = target.getBoundingClientRect()
+        window.scrollTo({
+            top: link == links[0] ? 0 : top + window.scrollY - 80,
+            behavior: "smooth",
+        });
+        toggle()
+    }, [links, toggle])
+
     const burgerClass = useMemo(() => {
         const arr = ['hamburger', 'hamburger--arrowalt-r']
         if (showMenu) arr.push('is-active')
@@ -55,10 +79,9 @@ function Component(props: Props) {
                 </button>
                 <div className={menuClass}>
                     <div className="Background-inner">
-                        <button className="Navigation-link">About Me</button>
-                        <button className="Navigation-link">News</button>
-                        <button className="Navigation-link">Research</button>
-                        <button className="Navigation-link">CV</button>
+                        {links.map(l => (
+                            <button id={`link-to-${l.id}`} className="Navigation-link" onClick={onClick}>{l.title}</button>
+                        ))}
                     </div>
                 </div>
             </div>

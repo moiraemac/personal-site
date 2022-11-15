@@ -6,6 +6,6 @@ import allGrafs from '../fixture/grafs'
 const frameName = "Awards"
 const grafs = [2, 15].map(idx => allGrafs[idx])
 
-const AwardsFrame = () => <BaseFrame frameName={frameName} grafs={grafs} />
+const AwardsFrame = () => <BaseFrame frameName={frameName} grafs={grafs} id="awards" />
 
 export default AwardsFrame

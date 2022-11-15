@@ -1,27 +1,22 @@
 import React from 'react'
+import '../App.css'
 
-import Frame from './baseWithChildren'
-import sentences from '../fixture/sentences'
 
-const frameName = "Research"
+function ListFrame() {
+    return (
+        <div className="Frame List-Frame" id={"research"}>
+            <h2>Research</h2>
+            <h3>Publications</h3>
+            <ul>
+                <li>M. MacNeil*, and M. Bodur, "Constraint Programming Approaches to the Discretizable Molecular Distance Geometry Problem", Networks, 79(4): 515-536, 2022.</li>
+                <li>M. MacNeil*, and M. Bodur, "Integer Programming, Constraint Programming, and Hybrid Decomposition Approaches to Discretizable Distance Geometry Problems", INFORMS Journal on Computing, 34(1): 297-314, 2022.</li>
+            </ul>
+            <h3>Preprints</h3>
+            <ul>
+                <li>M. MacNeil*, and M. Bodur, "Leveraging Decision Diagrams to Solve Two-stage Stochastic Programs with Binary Recourse and Logical Linking Constraints", 2022.</li>
+            </ul>
+        </div>
+    )
+}
 
-const ResearchFrame = () => <Frame frameName={frameName} >
-    <h3>Are Dogs Cute?</h3>
-    <ul>
-        <li>{sentences[2]}</li>
-        <li>{sentences[3]}</li>
-        <li>{sentences[8]}</li>
-    </ul>
-    <h3>Who's a good boy?</h3>
-    <ul>
-        <li>{sentences[4]}</li>
-        <li>{sentences[15]}</li>
-        <li>{sentences[12]}</li>
-    </ul>
-    <h3>Cats</h3>
-    <ul>
-        <li>{sentences[11]}</li>
-    </ul>
-</Frame>
-
-export default ResearchFrame
+export default ListFrame;

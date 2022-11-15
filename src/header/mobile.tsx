@@ -39,7 +39,11 @@ function Component(props: Props) {
     }, [showMenu, dirtyMenu])
     return (
         <div className={headerClass}>
+            <div className="Headshot-container">
+                <img src={headshot} className="Headshot" alt="logo" />
+            </div>
             <div className="Top-bar">
+
                 <div className="Text-container">
                     <span className="Primary">Moira MacNeil</span>
                     <span className="Secondary">PhD Student in Operations Research</span>

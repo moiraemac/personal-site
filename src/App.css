@@ -328,7 +328,10 @@
 
 .Mobile-Header {
   border: 1px solid red;
-  height: 64px;
+  overflow-x: clip;
+  overflow-y: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 .Mobile-Header .Top-bar {
@@ -346,7 +349,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
-  
   color: #000052;
 }
 
@@ -364,6 +366,30 @@
 .Mobile-Header .Links-container {
   background-color: yellow;
   width: 100%;
-  transform:translateX(50%);
   height: 64px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Mobile-Header .Navigation-link {
+  display: block;
+  border: none;
+  background: none;
+  text-align: left;
+  font-weight: 600;
+  font-size: large;
+}
+
+.Mobile-Header .Headshot-container {
+  width: 90vw;
+  height: 90vw;
+  border-radius: 45vw;
+  overflow: hidden;
+  align-self: center;
+}
+
+.Mobile-Header .Headshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

@@ -3,9 +3,12 @@ import React from 'react'
 import Frame from './listFrame'
 import allSentences from '../fixture/sentences'
 
-const frameName = "News"
-const sentences = [0, 19, 16, 5].map(idx => allSentences[idx])
+const frameName = "News";
 
-const NewsFrame = () => <Frame frameName={frameName} items={sentences} />
+const sentences = [
+    "September 2022: I have been accepted into the Prospective Professors in Training (PPIT) program at UofT",
+    "July 2022: I was awarded the Ontario Graduate Scholarship",
+];
+const NewsFrame = () => <Frame frameName={frameName} items={sentences} id="news"/>
 
 export default NewsFrame
