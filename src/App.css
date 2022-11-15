@@ -12,6 +12,9 @@
   padding-right: 48px;
   margin-right: 48px;
   text-align: left;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Frame:nth-child(2) {
@@ -27,6 +30,7 @@
 
 .Frame h2 {
   color: #000052;
+  margin-top: 0px;
 }
 
 @keyframes header-shrink {
@@ -251,12 +255,12 @@
   cursor: pointer;
 }
 
-@keyframes odd-stagger {
+/* @keyframes odd-stagger {
   from {
-    transform: translate(20px, 0%);
+    transform: translate(20px, 50%);
   }
   50% {
-    transform: translate(20px, 0%);
+    transform: translate(20px, 50%);
   }
   to {
     transform: translate(20px, 50%);
@@ -267,12 +271,12 @@
     transform: translate(20px, 50%);
   }
   50% {
-    transform: translate(20px, 0%);
+    transform: translate(20px, 50%);
   }
   to {
-    transform: translate(20px, 0%);
+    transform: translate(20px, 50%);
   }
-}
+} */
 
 @keyframes even-stagger {
   from {
@@ -282,12 +286,12 @@
     transform: translate(160px, 0%);
   }
   to {
-    transform: translate(160px, -50%);
+    transform: translate(160px, -100%);
   }
 }
 @keyframes even-unstagger {
   from {
-    transform: translate(160px, -50%);
+    transform: translate(160px, -100%);
   }
   50% {
     transform: translate(160px, 0%);
@@ -298,28 +302,28 @@
 }
 
 .Header .Menu-container .Background .Navigation-link:nth-child(odd){
-  transform: translate(20px, 50%);
+  transform: translate(20px, 0%);
 }
 .Header .Menu-container .Background .Navigation-link:nth-child(even){
-  transform: translate(160px, -50%);
+  transform: translate(160px, -100%);
 }
 
-.Header.Dirty .Menu-container .Background .Navigation-link:nth-child(odd){
+/* .Header.Dirty .Menu-container .Background .Navigation-link:nth-child(odd){
   animation-name: odd-stagger;
   animation-duration: 0.6s;
-}
+} */
 .Header.Dirty .Menu-container .Background .Navigation-link:nth-child(even){
   animation-name: even-stagger;
   animation-duration: 0.6s;
-  transform: translate(160px, -50%);
+  transform: translate(160px, -100%);
 }
 
 
-.Header.Small .Menu-container .Background .Navigation-link:nth-child(odd){
+/* .Header.Small .Menu-container .Background .Navigation-link:nth-child(odd){
   animation-name: odd-unstagger;
   animation-duration: 0.6s;
   transform: translate(20px, 0%);
-}
+} */
 .Header.Small .Menu-container .Background .Navigation-link:nth-child(even){
   animation-name: even-unstagger;
   animation-duration: 0.6s;
