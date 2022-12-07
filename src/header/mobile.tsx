@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import '../App.css'
 import '../burger.css'
-import headshot from '../resources/headshot.jpg';
+import headshot from '../resources/headshot.png';
 
 type Props = {
     isSmall: boolean

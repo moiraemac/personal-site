@@ -29,7 +29,7 @@ function App() {
   return (
     <div className={className}>
       <Header isSmall={scrolled} isMobile={isMobile} links={headers}/>
-      <BiographyFrame />
+      <BiographyFrame includeContact={isMobile} />
       <NewsFrame />
       <EducationFrame />
       <ResearchFrame />

@@ -13,7 +13,7 @@ function ListFrame() {
             </ul>
             <h3>Preprints</h3>
             <ul>
-                <li>M. MacNeil*, and M. Bodur, "Leveraging Decision Diagrams to Solve Two-stage Stochastic Programs with Binary Recourse and Logical Linking Constraints", 2022.</li>
+                <li>M. MacNeil*, and M. Bodur, <a href="https://optimization-online.org/wp-content/uploads/2022/11/BDD_2SP.pdf">"Leveraging Decision Diagrams to Solve Two-stage Stochastic Programs with Binary Recourse and Logical Linking Constraints"</a>, 2022.</li>
             </ul>
         </div>
     )

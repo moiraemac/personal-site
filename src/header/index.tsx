@@ -13,10 +13,10 @@ type Props = {
 
 function Frame(props: Props) {
     const {isMobile, ...passThrough} = props;
-    if (isMobile) {
-        return <MobileHeader {...passThrough} />;
-    }
-    return <FullSizeHeader {...passThrough} />;
+    // if (isMobile) {
+    //     return <MobileHeader {...passThrough} />;
+    // }
+    return <FullSizeHeader isMobile={isMobile} {...passThrough} />;
 }
 
 export default Frame;

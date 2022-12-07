@@ -1,9 +1,11 @@
 import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import '../App.css'
 import '../burger.css'
-import headshot from '../resources/headshot.jpg';
+import useIsNarrow from '../hooks/isNarrow';
+import headshot from '../resources/headshot.png';
 
 type Props = {
+    isMobile: boolean
     isSmall: boolean
     links: {
         id: string,
@@ -12,7 +14,7 @@ type Props = {
 }
 
 function Component(props: Props) {
-    const {links} = props; 
+    const {links, isMobile} = props; 
     const [showMenu, setShowMenu] = useState(false)
     const [dirtyMenu, setDirtyMenu] = useState(false)
     const [dirty, setDirty] = useState(false)
@@ -28,9 +30,10 @@ function Component(props: Props) {
     const headerClass = useMemo(() => {
         const arr = ['Header']
         if (dirty) arr.push('Dirty')
-        if (props.isSmall) arr.push('Small')
+        if (isMobile) arr.push('Mobile')
+        if (isMobile || props.isSmall) arr.push('Small')
         return arr.join(' ')
-    }, [props.isSmall, dirty])
+    }, [props.isSmall, dirty, isMobile])
     const onClick = useCallback(evt => {
         const link = links.find(l => "link-to-" + l.id == evt.target.id)
         if (!link) {
@@ -66,11 +69,15 @@ function Component(props: Props) {
             <div className="Headshot-container">
                 <img src={headshot} className="Headshot" alt="logo" />
             </div>
-            <div className="Text-container">
+            {!isMobile && <div className="Text-container">
                 <span className="Primary">Moira MacNeil</span>
-                <span className="Secondary">PhD Student in Operations Research</span>
-                <span className="Tertiary">University of Toronto<br/>m.macneil [at] utoronto [dot] ca</span>
-            </div>
+                <span className="Secondary">PhD Candidate</span>
+                <span className="Tertiary">
+                    Department of Mechanical and Industrial Engineering<br/>
+                    University of Toronto<br/>
+                    m.macneil [at] utoronto [dot] ca<br/>
+                </span>
+            </div>}
             <div className="Menu-container">
                 <button className={burgerClass} type="button" onClick={toggle}>
                     <span className="hamburger-box">
